@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dcbf72edfe5e9a458329ce35edc336c, type: 3}
+  m_Name: Resource_Wood_Brown
+  m_EditorClassIdentifier: 
+  <DisplayName>k__BackingField: Brown Wood
+  <Icon>k__BackingField: {fileID: 21300000, guid: ae3d03f1fc2047140a482a3b357a9c4e, type: 3}
+  <Description>k__BackingField: Basic wood resource
+  <Value>k__BackingField: 0
