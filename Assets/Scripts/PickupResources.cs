@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PickupResources : MonoBehaviour
 {
-    [field: SerializeField] public Inventory Inventory { get; private set; }
+    [field: SerializeField] public InventoryOLD Inventory { get; private set; }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
