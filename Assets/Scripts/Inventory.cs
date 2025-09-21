@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class InventoryOLD : MonoBehaviour
 {
     [field: SerializeField] public SerializableDictionary<Resource, int> Resources { get; set; }
 
