@@ -1,22 +1,27 @@
-using System;
-using TMPro;
-using Unity.VisualScripting;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
+using System;
+using UnityEngine.EventSystems;
 
 namespace Inventory.UI
 {
-    public class UIInventoryItem : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IEndDragHandler, IDropHandler
+    public class UIInventoryItem : MonoBehaviour, IPointerClickHandler,
+        IBeginDragHandler, IEndDragHandler, IDropHandler, IDragHandler
     {
-        [SerializeField] private Image itemImage;
-        [SerializeField] private TMP_Text quantityTxt;
+        [SerializeField]
+        private Image itemImage;
+        [SerializeField]
+        private TMP_Text quantityTxt;
 
-        [SerializeField] private Image borderImage;
+        [SerializeField]
+        private Image borderImage;
 
-
-        public event Action<UIInventoryItem> OnItemClicked, OnItemDroppedOn,
-        OnItemBeginDrag, OnItemEndDrag, OnRightMouseBtnClick;
+        public event Action<UIInventoryItem> OnItemClicked,
+            OnItemDroppedOn, OnItemBeginDrag, OnItemEndDrag,
+            OnRightMouseBtnClick;
 
         private bool empty = true;
 
@@ -25,24 +30,21 @@ namespace Inventory.UI
             ResetData();
             Deselect();
         }
-
-
         public void ResetData()
         {
-            this.itemImage.gameObject.SetActive(false);
-            this.empty = true;
+            itemImage.gameObject.SetActive(false);
+            empty = true;
         }
         public void Deselect()
         {
             borderImage.enabled = false;
         }
-
         public void SetData(Sprite sprite, int quantity)
         {
-            this.itemImage.gameObject.SetActive(true);
-            this.itemImage.sprite = sprite;
-            this.quantityTxt.text = quantity + "";
-            this.empty = false;
+            itemImage.gameObject.SetActive(true);
+            itemImage.sprite = sprite;
+            quantityTxt.text = quantity + "";
+            empty = false;
         }
 
         public void Select()
@@ -62,16 +64,16 @@ namespace Inventory.UI
             }
         }
 
-        public void OnBeginDrag(PointerEventData eventData)
-        {
-            Debug.Log("OnBeginDrag called.");
-            if (empty) { Debug.Log("Drag failed: item slot is empty."); return; }
-            OnItemBeginDrag?.Invoke(this);
-        }
-
         public void OnEndDrag(PointerEventData eventData)
         {
             OnItemEndDrag?.Invoke(this);
+        }
+
+        public void OnBeginDrag(PointerEventData eventData)
+        {
+            if (empty)
+                return;
+            OnItemBeginDrag?.Invoke(this);
         }
 
         public void OnDrop(PointerEventData eventData)
@@ -81,7 +83,7 @@ namespace Inventory.UI
 
         public void OnDrag(PointerEventData eventData)
         {
-            
+
         }
     }
 }
